@@ -22,11 +22,11 @@ def create_book():
     return response, 201 # tuple of 2 values
 
 
-@books_bp.get("/") # without /, books/ will get 404
+@books_bp.get("") # without /, books/ will get 404 though
 def get_all_books():
     query = db.select(Book)
 
-    title_param = request.args.get("title") # request.arg object that has title
+    title_param = request.args.get("title") # request.arg object that has title. Don't use ["name"]
     if title_param: 
         query = query.where(Book.title.ilike(f"%{title_param}%"))
 
