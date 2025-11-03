@@ -31,8 +31,9 @@ def app():
     with app.app_context():
         db.drop_all()
 
-# client fixture requests existing app fixture to run first
-# this function makes a test client
+# client fixture requests existing app fixture to run first by having app as input
+# simulates a client making HTTP requests.
+# test_client() comes from flask(https://flask.palletsprojects.com/en/stable/testing/) 
 @pytest.fixture
 def client(app):
     return app.test_client()
